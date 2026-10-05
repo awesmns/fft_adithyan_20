@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url("./alliance.jpeg");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        body {
+            margin: 0;
+            padding: 24px 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        img {
+            width: 150px;
+            height: auto;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 44px;
+            margin: 0 0 20px;
+        }
+
+        .box {
+            width: 100%;
+            max-width: 560px;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid #d0d0d0;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+            padding: 24px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .field {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            height: 40px;
+            padding: 0 12px;
+            font-family: inherit;
+            font-size: 16px;
+            border: 1px solid #999;
+            border-radius: 6px;
+            background: #fff;
+        }
+
+        input:focus {
+            outline: 2px solid #1a3c6e;
+            border-color: #1a3c6e;
+        }
+
+        button {
+            height: 44px;
+            margin-top: 6px;
+            font-family: inherit;
+            font-size: 17px;
+            font-weight: bold;
+            color: #fff;
+            background: #1a3c6e;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #12294d;
+        }
+
+        #result {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #result h2 {
+            margin: 0 0 14px;
+            font-size: 24px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 8px 0;
+            border-top: 1px solid #ddd;
+            font-size: 17px;
+            text-align: left;
+        }
+
+        .row span:last-child {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .pass { color: #1b7a3a; }
+        .fail { color: #c0272d; }
+
+        @media (max-width: 560px) {
+            h1 { font-size: 32px; }
+            .field { grid-template-columns: 1fr; gap: 4px; }
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./alliance_logo.svg" alt="Alliance logo">
+
+    <h1>Student Result Dashboard</h1>
+
+    <div class="box">
+        <form>
+            <div class="field">
+                <label for="i1">Student Name:</label>
+                <input type="text" name="n1" id="i1">
+            </div>
+
+            <div class="field">
+                <label for="i2">Register No:</label>
+                <input type="number" name="n2" id="i2">
+            </div>
+
+            <div class="field">
+                <label for="m0">Advanced Data Science:</label>
+                <input type="number" id="m0" min="0" max="100">
+            </div>
+
+            <div class="field">
+                <label for="m1">Advanced UI/UX Design:</label>
+                <input type="number" id="m1" min="0" max="100">
+            </div>
+
+            <div class="field">
+                <label for="m2">Python Basics to Advanced:</label>
+                <input type="number" id="m2" min="0" max="100">
+            </div>
+
+            <div class="field">
+                <label for="m3">Communication &amp; Life Skills:</label>
+                <input type="number" id="m3" min="0" max="100">
+            </div>
+
+            <div class="field">
+                <label for="m4">Discrete Structures:</label>
+                <input type="number" id="m4" min="0" max="100">
+            </div>
+
+            <div class="field">
+                <label for="m5">Front-End Frameworks:</label>
+                <input type="number" id="m5" min="0" max="100">
+            </div>
+
+            <div class="field">
+                <label for="m6">Problem Solving Through Aptitude:</label>
+                <input type="number" id="m6" min="0" max="100">
+            </div>
+
+            <button type="button" onclick="Check()">Results</button>
+        </form>
+    </div>
+
+    <div class="box" id="result"></div>
+
+    <script>
+        const subjects = [
+            "Advanced Data Science",
+            "Advanced UI/UX Design",
+            "Python Basics to Advanced",
+            "Communication & Life Skills",
+            "Discrete Structures",
+            "Front-End Frameworks",
+            "Problem Solving Through Aptitude"
+        ];
+
+        function Check() {
+            let n1 = document.getElementById("i1").value;
+            let n2 = document.getElementById("i2").value;
+
+            let marks = subjects.map((_, i) => Number(document.getElementById("m" + i).value));
+
+            let total = marks.reduce((a, b) => a + b, 0);
+            let max = subjects.length * 100;
+            let avg = total / subjects.length;
+            let per = (total / max) * 100;
+
+            let grade;
+            if (avg >= 80) {
+                grade = "A";
+            } else if (avg >= 60) {
+                grade = "B";
+            } else if (avg >= 40) {
+                grade = "C";
+            } else {
+                grade = "D";
+            }
+
+            let passed = avg >= 40;
+            let status = passed ? "PASS" : "FAIL";
+            let statusClass = passed ? "pass" : "fail";
+
+            function row(label, value, cls) {
+                return '<div class="row"><span>' + label + '</span><span class="' + (cls || "") + '">' + value + '</span></div>';
+            }
+
+            let html = "<h2>Your Results</h2>" +
+                row("Student Name:", n1) +
+                row("Student Reg No:", n2);
+
+            subjects.forEach((name, i) => {
+                html += row(name + ":", marks[i]);
+            });
+
+            html += row("Total Marks:", total + " / " + max) +
+                row("Average Marks:", avg.toFixed(2)) +
+                row("Mark Percentage:", per.toFixed(2) + "%") +
+                row("Your Grade:", grade) +
+                row("PASS/FAIL Status:", status, statusClass);
+
+            let box = document.getElementById("result");
+            box.innerHTML = html;
+            box.style.display = "block";
+        }
+    </script>
+</body>
+</html>

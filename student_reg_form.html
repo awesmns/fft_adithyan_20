@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <title>Student Registration Form</title>
+        <style>
+            form{
+                border: 1px solid black;
+                width: 500px;
+                margin-left: 550px;
+                margin-top: 100;
+                border-radius: 5%;
+                background-color: rgb(151, 231, 245);
+                box-shadow: 4px 8px 30px;
+                padding: 50px;
+                }
+
+            label{padding-left: 120px;}
+            #default{border: 0;}
+            #i2{width: 200px; margin-left: 52px; border: 0;}
+            #i3{width: 200px; margin-left: 13px; border: 0;}
+            #i4{width: 200px; margin-left: 30px; border: 0;}
+            #i5{width: 200px; margin-left: 40px; border: 0;}
+            #i6{width: 200px; margin-left: 20px; border: 0;}
+            #i7{width: 200px; margin-left: 46px; border: 0;}
+            #i8{width: 200px; margin-left: 34px; border: 0;}
+            #i9{width: 200px; margin-left: 32px; border: 0;}
+            #b1{width: 200px; margin-left: 32px; border: 0; border-radius: 20px;}
+            #b1:hover{background-color: green; width: 200px; margin-left: 32px; border: 0; border-radius: 20px;}
+            #b2{width: 200px; margin-left: 32px; border: 0; border-radius: 20px;}
+            #b2:hover{background-color: green; width: 200px; margin-left: 32px; border: 0; border-radius: 20px;}
+            #i11{width: 200px; margin-left: 41px; border: 0;}
+        </style>
+    </head>
+    <body>
+
+    <form>
+          <h1 style="text-align: center;">Student Registration Form</h1>   
+          <label>Registration ID:</label>
+          <input type="number" placeholder="Enter your Reg ID" id="default">
+    <br><br>
+
+    <form>
+        <label>Name:</label>
+        <input type="text" id="i2">
+    <br><br>
+
+    <form>
+        <label>Gender:</label>
+        Male<input type="radio" name="gender">
+        Female<input type="radio" name="gender">
+        Others<input type="radio" name="gender">
+    <br><br>
+
+    <form>
+         <label>Date of Birth:</label>
+         <input type="date" id="i3">
+    <br><br>
+
+    <form> 
+    <label> Phone No:</label>
+    <input type="number" id="i4">
+    <br><br>
+
+    <form>
+    <label>Address:</label>
+    <textarea id="i5"></textarea>
+    <br><br>
+
+    <form> 
+    <label>Department:</label>
+    <input type="text" id="i6">
+    <br><br>
+
+    <form> 
+    <label>Course:</label>
+    <input type="text" id="i7">
+    <br><br>
+
+    <form>
+    <label>Email ID:</label>
+    <input type="email" id="i8">
+    <br><br>
+
+    <form>
+    <label>Password:</label>
+    <input type="password" id="i9">
+    <br><br>
+
+    <form>
+    <label>Resume:</label>
+    <input type="file" id="i11">
+    <br><br>
+
+    <form>
+    <button type="submit" id="b1">Submit</button>
+    <button type="reset" id="b2">Reset</button>
+    <br><br>
+    </form>
+    </body>
+</html>
