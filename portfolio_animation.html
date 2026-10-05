@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Grid Protfolio Webpage</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family: 'Segoe UI', sans-serif;
+            background:#f4f4f4;
+        }
+
+        .container{
+            display:grid;
+            grid-template-columns:1fr 2fr;
+            grid-template-areas:
+            "header header"
+            "nav nav"
+            "sidebar main"
+            "footer footer";
+            gap:10px;
+            padding:10px;
+            min-height:100vh;
+        }
+
+        .header{
+            grid-area:header;
+            background:#52bffe;
+            color:white;
+            text-align:center;
+            padding:20px;
+            animation:slideDown 1s;
+        }
+
+        .nav{
+            grid-area:nav;
+            background:#3d8fee;
+            text-align:center;
+            padding:15px;
+        }
+
+        .nav a{
+            color:white;
+            text-decoration:none;
+            margin:0 15px;
+        }
+
+        .nav a:hover{
+            color:yellow;
+        }
+
+        .sidebar{
+            grid-area:sidebar;
+            background:#ca82f9;
+            padding:20px;
+            animation:fadeIn 2s;
+        }
+
+        .main{
+            grid-area:main;
+            background:rgb(140, 188, 237);
+            padding:20px;
+            animation:fadeIn 2s;
+        }
+
+        .project{
+            background:#e8e8e8;
+            padding:15px;
+            margin-top:10px;
+            transition:0.3s;
+        }
+
+        .project:hover{
+            background:#52bffe;
+            transform:scale(1.05);
+        }
+
+        button{
+            padding:10px 20px;
+            margin-top:15px;
+            border:none;
+            background:#333333;
+            color:white;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:rgb(60, 123, 233);
+            transform:scale(1.1);
+        }
+
+        h2{
+            margin-top:15px;
+            margin-bottom:10px;
+        }
+
+        ul{
+            margin-left:20px;
+        }
+
+        @keyframes slideDown{
+            from{
+                transform:translateY(-50px);
+                opacity:0;
+            }
+            to{
+                transform:translateY(0);
+                opacity:1;
+            }
+        }
+
+        @keyframes fadeIn{
+            from{
+                opacity:0;
+            }
+            to{
+                opacity:1;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Adithyan M R</h1>
+        <p>Welcome to my personal portfolio webpage</p>
+    </div>
+    <div class="nav">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Projects</a>
+        <a href="#">Contact</a>
+    </div>
+    <div class="sidebar">
+        <h2>About Me</h2>
+        <p>
+            Hello! I am Adi, a student passionate about technology and innovation.
+            I have a strong interest in web development, programming, and game development.
+            I enjoy learning new technologies, building creative projects, and improving my problem-solving skills through coding.
+            My goal is to create useful, interactive, and engaging digital experiences while continuously expanding my knowledge in the field of computer science.
+            I am always eager to explore new ideas, take on challenges, and develop projects that help me grow as a developer.
+            Through my academic journey and personal projects, I strive to strengthen my technical skills and prepare for a successful career in the technology industry.
+        </p>
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+        </ul>
+        <h2>Hobbies</h2>
+        <p>Gaming, Coding, Watching Movies, Reading</p>
+    </div>
+    <div class="main">
+        <h2>Education</h2>
+        <p>Master of Computer Applications (MCA) - Game Development</p>
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Portfolio Website</h3>
+            <p>A personal portfolio website built using HTML and CSS Grid.</p>
+        </div>
+        <div class="project">
+            <h3>Student Registration Form</h3>
+            <p>A registration form developed using HTML and CSS.</p>
+        </div>
+        <div class="project">
+            <h3>Game Popularity Analysis</h3>
+            <p>Data Science project for analyzing game popularity trends.</p>
+        </div>
+        <h2>Achievements</h2>
+        <ul>
+            <li>Completed Web Development Projects</li>
+            <li>Participated in Technical Events</li>
+            <li>Learning Data Science and Game Development</li>
+        </ul>
+        <button>Download Resume</button>
+        <h2>Contact</h2>
+        <p>Email: adhiknows@gmail.com</p>
+        <p>Phone: +91 703 496 1954<p>
+    </div>
+</div>
+</body>
+</html>
