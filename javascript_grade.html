@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grade Calculator</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #feffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .calculator {
+            width: 400px;
+            background-color: rgb(237, 168, 78);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #040404;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #060606;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background-color: #187225;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #153eaa;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="calculator">
+
+        <h1>Grade Calculator</h1>
+
+
+        <label>FFT Subject</label>
+        <input type="number" id="m1" placeholder="Enter marks">
+              
+
+
+        <label>PST subject</label>
+        <input type="number" id="m2" placeholder="Enter marks">
+              
+        <label>DST subject</label>
+        <input type="number" id="m3" placeholder="Enter marks">
+              
+        <label>ADS subject</label>
+        <input type="number" id="m4" placeholder="Enter marks">
+              
+        <label>BAD subject</label>
+        <input type="number" id="m5" placeholder="Enter marks">
+              
+
+        <button onclick="calculateGrade()"> Calculate Grade </button>
+
+        <div id="result"> 
+            
+            <p>Enter the marks and click the calculate grade</p>
+        
+        </div> 
+    
+    </div>
+       
+
+
+       
+
+
+    <script>
+
+        function calculateGrade() {
+
+            let m1 = Number(document.getElementById("m1").value);
+            let m2 = Number(document.getElementById("m2").value);
+            let m3 = Number(document.getElementById("m3").value);
+            let m4 = Number(document.getElementById("m4").value);
+            let m5 = Number(document.getElementById("m5").value);
+
+      //  total marks
+
+            let total = m1 + m2 + m3 + m4 + m5;
+
+         //percentage
+          
+
+            let percentage = total / 5;
+
+
+            // grade
+
+            let grade;
+
+
+            if (percentage >= 90) {
+
+                grade = "A+";
+
+            }
+
+            else if (percentage >= 80) {
+
+                grade = "A";
+
+            }
+
+            else if (percentage >= 70) {
+
+                grade = "B";
+
+            }
+
+            else if (percentage >= 60) {
+
+                grade = "C";
+
+            }
+
+            else if (percentage >= 50) {
+
+                grade = "D";
+
+            }
+
+            else if (percentage >= 40) {
+
+                grade = "E";
+
+            }
+
+            else {
+
+                grade = "F";
+
+            }
+
+
+            // result
+
+            document.getElementById("result").innerHTML =
+
+                "Total Marks: " + total + " / 500" +
+                "<br><br>" +
+
+                "Percentage: " + percentage + "%" +
+                "<br><br>" +
+
+                "Grade: <b>" + grade + "</b>";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
